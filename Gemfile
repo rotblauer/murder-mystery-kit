@@ -53,17 +53,28 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   
-  # ie `tp Game.first` in rails console. 
-  gem 'table_print' 
+
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
+
+  # ie `tp Game.first` in rails console. 
+  gem 'table_print' 
+
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # Livereload.
+  # https://mattbrictson.com/lightning-fast-sass-reloading-in-rails
+  # guard -P livereload
+  gem "guard", ">= 2.2.2", :require => false
+  gem "guard-livereload",  :require => false
+  gem "rack-livereload"
+  gem "rb-fsevent",        :require => false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
