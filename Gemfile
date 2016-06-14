@@ -27,12 +27,34 @@ gem 'jbuilder', '~> 2.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# User authentication.
+gem 'devise'
+
+# Makeup.
+gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'rails-assets-tether', '>= 1.1.0'
+gem "font-awesome-rails"
+
+# Seed fake data helper, ie Faker::Name.name
+gem 'faker'
+
+
+
+
+# Heroku needs this to do logging right
+# $ heroku logs -t 
+gem 'rails_12factor', group: :production
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  
+  # ie `tp Game.first` in rails console. 
+  gem 'table_print' 
 end
 
 group :development do
