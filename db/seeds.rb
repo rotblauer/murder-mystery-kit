@@ -19,8 +19,8 @@ host = Host.create({name: Faker::StarWars.character, email: 'murder@mystery.kit'
 # 
 # The game of the evening.
 tonights_game = Game.create({
-		name: 'Scarlet O\'Scarya',
-		backstory: 'A russian mistress with a passion for passion.'
+		name: 'Scarlet O\'Scarya is at it again.',
+		backstory: 'A russian mistress with a passion for passion becomes entagled with a forgetful groundskeeper in Norway.'
 	})
 another_random_game = Game.create({
 		name: 'A Night at the Zoo', 
@@ -69,12 +69,12 @@ game_events = 8.times do |t|
 		})
 
 	# involve a random (>=0) number of characters in each event
-	available_characters = tonights_game.characters.all.to_a
 	# rand => 0.2345342, ie random 0-1 float
-	# round => rounds up to nearest Integer
-	(rand * (PARTY_SIZE)).round.times do |t|
-		# Array.shift returns and removes item from array
-		accidental_chandelier_smashing.event_characters.create(character_id: available_characters.shift.id)
+	# ceil => rounds up to nearest Integer
+	(rand * (PARTY_SIZE)).ceil.times do |t|
+		# using index here to assign characters isn't the most elegant because the first n characters get to have all the fun
+		# same(ish) problem is below for guests
+		accidental_chandelier_smashing.event_characters.create(character_id: tonights_game.characters.to_a[t].id)
 	end
 end
 
@@ -104,10 +104,11 @@ PARTY_SIZE.times do |t|
 end
 
 # Assign each of our guests to characters in the game.
-evening.guests.each do |guest|
+evening.guests.each_with_index do |guest, index|
 	guest.guest_characters.create({
 		evening_id: evening.id,
-		character_id: evening.game.characters.to_a.shift.id # to_a (like above) cuz it must be an Array, not an ActiveRecord::Association
+		# inelegance is matching guests to characters by index (order), instead of randomness
+		character_id: tonights_game.characters.all.to_a[index].id 
 		})
 end
 

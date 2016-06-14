@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  time:
+    formats:
+      short: "%a %k:%M%P - %b %-d"
+      day_and_month: '%b %-d'
+      oclock: "%k:%M%P"

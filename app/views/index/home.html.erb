@@ -1,27 +1,29 @@
-<h1 class='text-danger'>Murder Mystery Kitty</h1>
-
-
-<div class="row">
+<div class="row m-t-3">
 	<div class="col-sm-4">
-		<h4>Hosts</h4>
+		<h4>Hosts registered</h4>
 		<% @hosts.each do |host| %>
 
 			<!-- TODO: move to _host partial, like _game -->
-			<p><%= host.name %> <span class="text-muted"><%= host.email %></span></p>
-			
-			<ul class="text-primary">
-				<% host.evenings.each do |evening| %>
-					<li><%= link_to evening.game.name, evening.game %> - <span class="text-warning"><%= evening.location %></span> <br>
-						<span class="text-muted"><%= evening.caveat %></span>
-					</li>
-				<% end %>
-			</ul>
+
+			<div class="card">
+				<div class="card-block">
+					<p><%= host.name %> <span class="text-muted"><%= host.email %></span><br>
+					<span class="text-muted">hosted <%= pluralize host.evenings.count, 'evening' %></span>
+					</p>
+				</div>
+			</div>
 
 
 		<% end %>		
 	</div>
 
-	<div class="col-sm-6">
+	<div class="col-sm-4">
+		<h4>Evenings</h4>
+		<%= render @evenings %>
+	</div>
+
+
+	<div class="col-sm-4">
 		<h4>Games</h4>
 		<!-- 
 		rails shorthand for

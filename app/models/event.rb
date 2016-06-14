@@ -7,6 +7,6 @@ class Event < ApplicationRecord
   has_many :event_characters
 
   # => event.characters
-  has_many :characters, through: :character_events
+  has_many :characters, through: :event_characters
 
 end

@@ -1,0 +1,52 @@
+<div class="card">
+	<div class="card-block">
+		<p class="text-primary">
+			<span class="text-muted">Game: </span>
+			<%= link_to evening.game.name, evening.game %> <br>
+			<span class="text-muted">Hosted by: </span> 
+			<%= evening.host.name %> <br>
+			<span class="text-muted">Location: </span>
+			<%= evening.location %> <br>
+			<span class="text-muted">Caveats: </span>
+			<%= evening.caveat %> 
+		</p>
+
+		<hr>
+
+		<p class="text-danger">
+			Events: 
+			<ul class="text-danger">
+				<% evening.game.events.each do |event| %>
+					<li><%= event.title %> 
+						<span>
+							<% event.characters.each do |involved_character| %>
+								<span class="label label-warning">
+									<%= involved_character.name %>
+								</span>
+							<% end %>
+						</span>
+					</li>
+				<% end %>
+			</ul>
+		</p>
+
+		<hr>
+
+		<p class="text-info">
+			<%= pluralize evening.game.characters.count, 'character' %>: 
+			<ul class="text-info">
+				<% evening.game.characters.each do |c| %>
+					<li>
+						<span><%= link_to c.guests.first.name, c.guests.first %> </span> <span class="text-muted">as</span> <span class="text-warning"><%= c.name %></span> 
+						<span class="text-muted"><em>
+							(<%= c.guests.first.phone_number %>)
+						</em></span>
+					</li>
+				<% end %>
+			</ul>	
+		</p>
+		
+		
+
+	</div>
+</div>
