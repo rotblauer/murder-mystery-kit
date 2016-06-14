@@ -5,6 +5,8 @@
 	<div class="col-sm-4">
 		<h4>Hosts</h4>
 		<% @hosts.each do |host| %>
+
+			<!-- TODO: move to _host partial, like _game -->
 			<p><%= host.name %> <span class="text-muted"><%= host.email %></span></p>
 			
 			<ul class="text-primary">
@@ -14,6 +16,7 @@
 					</li>
 				<% end %>
 			</ul>
+
 
 		<% end %>		
 	</div>
