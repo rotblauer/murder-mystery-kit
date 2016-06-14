@@ -4,6 +4,9 @@ class Host < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # => host.evenings
   has_many :evenings
+
+  # => host.games 
   has_many :games, through: :evenings
 end

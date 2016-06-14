@@ -1,4 +1,13 @@
 class Guest < ApplicationRecord
+  
+	# => guest.evening
   belongs_to :evening
-  belongs_to :character
+
+  # => guest.guest_characters
+  has_many :guest_characters
+
+  # => guest.characters (will set by evening)
+  has_many :characters, through: :guest_characters
+
+
 end

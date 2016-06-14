@@ -21,6 +21,27 @@
     <%= f.text_field :backstory %>
   </div>
 
+  <div class="field p-l-3">
+    <%= f.label :characters %>
+    <%= f.fields_for :characters do |ff| %>
+      <div class="card">
+         <div> <%= ff.label :name %>
+           <%= ff.text_field :name %>
+           
+           <%= ff.label :backstory %>
+           <%= ff.text_field :backstory %>
+           
+           <%= ff.label :attire %>
+           <%= ff.text_field :attire %>
+           
+           <% if ff.object.persisted? %>
+             <%= ff.check_box :_destroy %>
+             <%= ff.label :_destroy, "Destroy" %>
+           <% end %></div>
+        </div>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,0 +1,16 @@
+<div class="card">
+<div class="card-block">
+
+<div class="card-text">
+	<p class="text-danger"><%= link_to game.name, game %> -
+		<em class='text-muted'><%= game.backstory %></em>
+	</p>
+	<ul class="text-primary">
+		<% game.characters.each do |character| %>
+			<li><%= link_to character.name, character %></li>
+		<% end %>
+	
+	</ul>
+</div>
+</div>
+</div>
