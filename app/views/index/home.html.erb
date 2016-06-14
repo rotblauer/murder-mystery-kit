@@ -1,5 +1,5 @@
 <div class="row m-t-3">
-	<div class="col-sm-4">
+	<div class="col-md-4">
 		<h4>Hosts registered</h4>
 		<% @hosts.each do |host| %>
 
@@ -17,13 +17,7 @@
 		<% end %>		
 	</div>
 
-	<div class="col-sm-4">
-		<h4>Evenings</h4>
-		<%= render @evenings %>
-	</div>
-
-
-	<div class="col-sm-4">
+	<div class="col-md-4">
 		<h4>Games</h4>
 		<!-- 
 		rails shorthand for
@@ -32,6 +26,14 @@
 		-->
 		<%= render @games %>	
 	</div>
+
+	<div class="col-md-4">
+		<h4>Evenings</h4>
+		<%= render @evenings %>
+	</div>
+
+
+	
 </div>
 
 
