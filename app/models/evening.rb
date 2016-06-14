@@ -7,9 +7,9 @@ class Evening < ApplicationRecord
   belongs_to :game
 
   # => evening.guests
-  has_many :guests
+  has_many :guests, dependent: :destroy
 
   # => evening.guest_characters
-  has_many :guest_characters
+  has_many :guest_characters, dependent: :destroy
   
 end

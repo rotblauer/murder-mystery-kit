@@ -5,7 +5,7 @@ class Host < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   # => host.evenings
-  has_many :evenings
+  has_many :evenings, dependent: :destroy
 
   # => host.games 
   has_many :games, through: :evenings
