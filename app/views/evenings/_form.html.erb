@@ -1,0 +1,37 @@
+<%= form_for(evening) do |f| %>
+  <% if evening.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(evening.errors.count, "error") %> prohibited this evening from being saved:</h2>
+
+      <ul>
+      <% evening.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :host_id %>
+    <%= f.text_field :host_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :game_id %>
+    <%= f.text_field :game_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :caveat %>
+    <%= f.text_field :caveat %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

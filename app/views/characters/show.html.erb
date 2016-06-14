@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @character.game %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @character.name %>
+</p>
+
+<p>
+  <strong>Backstory:</strong>
+  <%= @character.backstory %>
+</p>
+
+<p>
+  <strong>Attire:</strong>
+  <%= @character.attire %>
+</p>
+
+<%= link_to 'Edit', edit_character_path(@character) %> |
+<%= link_to 'Back', characters_path %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Event Characters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Character</th>
+      <th>Index</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event_characters.each do |event_character| %>
+      <tr>
+        <td><%= event_character.event %></td>
+        <td><%= event_character.character %></td>
+        <td><%= event_character.index %></td>
+        <td><%= link_to 'Show', event_character %></td>
+        <td><%= link_to 'Edit', edit_event_character_path(event_character) %></td>
+        <td><%= link_to 'Destroy', event_character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event Character', new_event_character_path %>

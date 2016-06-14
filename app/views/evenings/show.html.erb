@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Host:</strong>
+  <%= @evening.host %>
+</p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @evening.game %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @evening.location %>
+</p>
+
+<p>
+  <strong>Caveat:</strong>
+  <%= @evening.caveat %>
+</p>
+
+<%= link_to 'Edit', edit_evening_path(@evening) %> |
+<%= link_to 'Back', evenings_path %>

@@ -11,10 +11,77 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614091944) do
+ActiveRecord::Schema.define(version: 20160614102309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "characters", force: :cascade do |t|
+    t.integer  "game_id"
+    t.string   "name"
+    t.string   "backstory"
+    t.string   "attire"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_characters_on_game_id", using: :btree
+  end
+
+  create_table "evenings", force: :cascade do |t|
+    t.integer  "host_id"
+    t.integer  "game_id"
+    t.string   "location"
+    t.string   "caveat"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_evenings_on_game_id", using: :btree
+    t.index ["host_id"], name: "index_evenings_on_host_id", using: :btree
+  end
+
+  create_table "event_characters", id: false, force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "character_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["character_id"], name: "index_event_characters_on_character_id", using: :btree
+    t.index ["event_id"], name: "index_event_characters_on_event_id", using: :btree
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "game_id"
+    t.string   "title"
+    t.integer  "chronology"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_events_on_game_id", using: :btree
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string   "name"
+    t.string   "backstory"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "guest_characters", id: false, force: :cascade do |t|
+    t.integer  "guest_id"
+    t.integer  "character_id"
+    t.integer  "evening_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["character_id"], name: "index_guest_characters_on_character_id", using: :btree
+    t.index ["evening_id"], name: "index_guest_characters_on_evening_id", using: :btree
+    t.index ["guest_id"], name: "index_guest_characters_on_guest_id", using: :btree
+  end
+
+  create_table "guests", force: :cascade do |t|
+    t.integer  "evening_id"
+    t.string   "name"
+    t.string   "phone_number"
+    t.string   "email"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["evening_id"], name: "index_guests_on_evening_id", using: :btree
+  end
 
   create_table "hosts", force: :cascade do |t|
     t.string   "name"
@@ -39,4 +106,14 @@ ActiveRecord::Schema.define(version: 20160614091944) do
     t.index ["reset_password_token"], name: "index_hosts_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "characters", "games"
+  add_foreign_key "evenings", "games"
+  add_foreign_key "evenings", "hosts"
+  add_foreign_key "event_characters", "characters"
+  add_foreign_key "event_characters", "events"
+  add_foreign_key "events", "games"
+  add_foreign_key "guest_characters", "characters"
+  add_foreign_key "guest_characters", "evenings"
+  add_foreign_key "guest_characters", "guests"
+  add_foreign_key "guests", "evenings"
 end

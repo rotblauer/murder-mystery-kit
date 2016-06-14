@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Evenings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Host</th>
+      <th>Game</th>
+      <th>Location</th>
+      <th>Caveat</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @evenings.each do |evening| %>
+      <tr>
+        <td><%= evening.host %></td>
+        <td><%= evening.game %></td>
+        <td><%= evening.location %></td>
+        <td><%= evening.caveat %></td>
+        <td><%= link_to 'Show', evening %></td>
+        <td><%= link_to 'Edit', edit_evening_path(evening) %></td>
+        <td><%= link_to 'Destroy', evening, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Evening', new_evening_path %>

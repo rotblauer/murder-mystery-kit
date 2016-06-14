@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  host: one
+  game: one
+  location: MyString
+  caveat: MyString
+
+two:
+  host: two
+  game: two
+  location: MyString
+  caveat: MyString
