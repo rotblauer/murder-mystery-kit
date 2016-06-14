@@ -1,0 +1,51 @@
+<nav class="navbar navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Murder Mystery Kitty</a>
+  <ul class="nav navbar-nav">
+    <li class="nav-item">
+      <%= link_to "Home", root_path, class:'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Games', games_path, class:'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Characters', characters_path, class:'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Evenings", evenings_path, class:'nav-link' %>
+    </li>
+  </ul>
+<!--   <form class="form-inline pull-xs-right">
+    <input class="form-control" type="text" placeholder="Search">
+    <button class="btn btn-success-outline" type="submit">Search</button>
+  </form> -->
+
+	
+  
+	<div class="pull-xs-right">
+	<% if host_signed_in? %>
+	
+		<%= link_to destroy_host_session_path, method: :delete do  %>
+			<button class="btn btn-danger">
+				Log out
+			</button>
+		<% end %>
+  
+  <% else %>
+
+  	<%= link_to new_host_registration_path do %>
+			<button class="btn btn-success">
+				Sign up
+			</button>
+  	<% end %>
+
+  	<%= link_to new_host_session_path do  %>
+			<button class="btn btn-primary">
+				Log in
+			</button>			
+  	<% end %>
+
+  <% end %>
+  </div>
+
+
+</nav>

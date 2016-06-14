@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'index#home'
   devise_for :hosts
 
+  # resources :hosts
   resources :event_characters
   resources :events
   resources :guest_characters
